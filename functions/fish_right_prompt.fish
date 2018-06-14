@@ -25,7 +25,7 @@ end
 
 function __pretty_ms -S -a ms interval -d 'Millisecond formatting for humans'
   set -l interval_ms
-  set -l scale 1
+  set -l scale 2
 
   switch $interval
     case s
@@ -34,7 +34,7 @@ function __pretty_ms -S -a ms interval -d 'Millisecond formatting for humans'
       set interval_ms 60000
     case h
       set interval_ms 3600000
-      set scale 2
+      # set scale 2
   end
 
   switch $FISH_VERSION
