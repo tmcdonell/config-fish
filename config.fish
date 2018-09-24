@@ -11,3 +11,10 @@ set -x LESS_TERMCAP_us (printf "\033[01;32m")
 set -x MANPAGER "nvim -c 'set filetype=man nospell' -"
 
 # test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+# Nix
+# requires https://github.com/oh-my-fish/plugin-foreign-env
+if test -e "$HOME/.nix-profile/etc/profile.d/nix.sh"
+  fenv source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+end
+
