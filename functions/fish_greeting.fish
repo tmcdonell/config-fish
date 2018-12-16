@@ -1,0 +1,5 @@
+# vim: nospell
+function fish_greeting
+  fortune -as
+end
+
