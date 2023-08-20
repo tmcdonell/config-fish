@@ -10,7 +10,8 @@ set -x LESS_TERMCAP_so (printf "\033[01;44;33m")
 set -x LESS_TERMCAP_ue (printf "\033[0m")
 set -x LESS_TERMCAP_us (printf "\033[01;32m")
 
-# set -x MANPAGER "nvim -c 'set filetype=man nospell' -"
+set -x MANPAGER "nvim +Man!"
+set -x MANWIDTH "tty"
 set -x EDITOR (which nvim)
 
 # set -x FZF_DEFAULT_COMMAND 'fd --type file'
@@ -29,7 +30,7 @@ set -x fish_user_paths                           \
   $HOME/.ghcup/bin                               \
   $HOME/.cabal/bin                               \
   $HOME/.cargo/bin                               \
-  $HOME/.gem/ruby/2.6.0/bin                      \
+  $HOME/.gem/ruby/3.2.0/bin                      \
   $HOME/Library/Python/3.9/bin                   \
   /usr/local/anaconda3/bin                       \
   /usr/local/bin                                 \
