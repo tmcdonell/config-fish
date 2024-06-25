@@ -10,20 +10,9 @@ set -x LESS_TERMCAP_so (printf "\033[01;44;33m")
 set -x LESS_TERMCAP_ue (printf "\033[0m")
 set -x LESS_TERMCAP_us (printf "\033[01;32m")
 
-# set -x FZF_DEFAULT_COMMAND 'fd --type file'
-# set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-# set -x FZF_DEFAULT_OPTS '--color=fg:-1,fg+:#d0d0d0,bg:-1,bg+:#e0e0e0
-#   --color=hl:#4271ae,hl+:#5fd7ff,info:#eab700,marker:#3e999f
-#   --color=prompt:#eab700,spinner:#3e999f,pointer:#3e999f,header:#4271ae
-#   --color=border:#262626,label:#aeaeae,query:#d9d9d9
-#   --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
-#   --marker=">" --pointer="◆" --separator="─" --scrollbar="│"'
-# set -x FZF_DEFAULT_OPTS '--color=light'
-
 # set -x fish_color_status red
 # set -x fish_color_host   red
 # set -x fish_color_cwd    purple
-
 set -g tide_character_color normal
 
 fish_add_path -g /usr/local/bin
@@ -34,14 +23,11 @@ fish_add_path -g $HOME/.local/bin
 
 if which -s swiftenv; status --is-interactive; and source (swiftenv init -|psub); end
 
-# abbr gt ghcid --command='stack ghci' --test=':!stack build'
-# abbr sb stack build --jobs=8 -ghc-options="-j8 +RTS -N -A128M -n4m -RTS"
-# abbr sc stack clean
-# abbr sg stack ghci
 set -x MANPAGER "nvim +Man!"
 set -x MANWIDTH "tty"
 set -x EDITOR nvim
 set -x PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig
+set -x LS_COLORS (vivid generate gruvbox-light)
 
 # Install fisher plugins in a separate subdirectory
 set -x fisher_path "$__fish_config_dir/fisher"
@@ -60,6 +46,19 @@ abbr l ls
 abbr cp cp -i
 abbr rm rm -i
 abbr mv mv -i
+# abbr gt ghcid --command='stack ghci' --test=':!stack build'
+# abbr sb stack build --jobs=8 -ghc-options="-j8 +RTS -N -A128M -n4m -RTS"
+# abbr sc stack clean
+# abbr sg stack ghci
 
+# set -x FZF_DEFAULT_COMMAND 'fd --type file'
+# set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+# set -x FZF_DEFAULT_OPTS '--color=fg:-1,fg+:#d0d0d0,bg:-1,bg+:#e0e0e0
+#   --color=hl:#4271ae,hl+:#5fd7ff,info:#eab700,marker:#3e999f
+#   --color=prompt:#eab700,spinner:#3e999f,pointer:#3e999f,header:#4271ae
+#   --color=border:#262626,label:#aeaeae,query:#d9d9d9
+#   --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
+#   --marker=">" --pointer="◆" --separator="─" --scrollbar="│"'
+set -x FZF_DEFAULT_OPTS '--cycle --layout=reverse --color=light --border --height=90% --preview-window=wrap --marker="*"'
 fzf_configure_bindings --directory=\ct
 
