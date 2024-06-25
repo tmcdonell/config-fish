@@ -1,5 +1,4 @@
-# vim: nospell
 function fish_greeting
-  fortune
+  which -s fortune; and fortune
 end
 

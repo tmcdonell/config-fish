@@ -10,10 +10,6 @@ set -x LESS_TERMCAP_so (printf "\033[01;44;33m")
 set -x LESS_TERMCAP_ue (printf "\033[0m")
 set -x LESS_TERMCAP_us (printf "\033[01;32m")
 
-set -x MANPAGER "nvim +Man!"
-set -x MANWIDTH "tty"
-set -x EDITOR (which nvim)
-
 # set -x FZF_DEFAULT_COMMAND 'fd --type file'
 # set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 
@@ -21,28 +17,30 @@ set -x fish_color_status red
 set -x fish_color_host   red
 set -x fish_color_cwd    purple
 
-# gnuplot is broken
-# https://gitlab.gnome.org/GNOME/pango/issues/422
-#
-set -x fish_user_paths                           \
-  .                                              \
-  $HOME/.local/bin                               \
-  $HOME/.ghcup/bin                               \
-  $HOME/.cabal/bin                               \
-  $HOME/.cargo/bin                               \
-  $HOME/.gem/ruby/3.2.0/bin                      \
-  $HOME/Library/Python/3.9/bin                   \
-  /usr/local/anaconda3/bin                       \
-  /usr/local/bin                                 \
-  /usr/local/sbin                                \
-  /usr/local/opt/gnu-tar/libexec/gnubin
-  # /usr/local/opt/binutils/bin
+if which -s swiftenv; status --is-interactive; and source (swiftenv init -|psub); end
 
-# test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+abbr --add dotdot --regex '^\.\.+$' --function multicd
+abbr --add !! --position anywhere --function last_history_item
+abbr --add ssh --function kitty_ssh
+abbr --add :r --function last_history_item
+abbr l ls
+abbr cp cp -i
+abbr rm rm -i
+abbr mv mv -i
 
-# Nix
-# requires https://github.com/oh-my-fish/plugin-foreign-env
-if test -e "$HOME/.nix-profile/etc/profile.d/nix.sh"
-  fenv source "$HOME/.nix-profile/etc/profile.d/nix.sh"
-end
+# abbr gt ghcid --command='stack ghci' --test=':!stack build'
+# abbr sb stack build --jobs=8 -ghc-options="-j8 +RTS -N -A128M -n4m -RTS"
+# abbr sc stack clean
+# abbr sg stack ghci
+
+fish_add_path -g /usr/local/bin
+fish_add_path -g /opt/homebrew/bin
+fish_add_path -g $HOME/.ghcup/bin
+fish_add_path -g $HOME/.local/bin
+# fish_add_path -g .
+
+set -x MANPAGER "nvim +Man!"
+set -x MANWIDTH "tty"
+set -x EDITOR (which nvim)
+set -x PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig
 
