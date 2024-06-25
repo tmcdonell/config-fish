@@ -24,7 +24,7 @@ set -x LESS_TERMCAP_us (printf "\033[01;32m")
 # set -x fish_color_host   red
 # set -x fish_color_cwd    purple
 
-set -g tide_character_color 000000
+set -g tide_character_color normal
 
 fish_add_path -g /usr/local/bin
 fish_add_path -g /opt/homebrew/bin
