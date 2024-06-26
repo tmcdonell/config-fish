@@ -1,4 +1,4 @@
 function fish_greeting
-  which -s fortune; and fortune
+  which fortune > /dev/null; and fortune
 end
 

@@ -10,10 +10,10 @@ set -x LESS_TERMCAP_so (printf "\033[01;44;33m")
 set -x LESS_TERMCAP_ue (printf "\033[0m")
 set -x LESS_TERMCAP_us (printf "\033[01;32m")
 
-# set -x fish_color_status red
-# set -x fish_color_host   red
-# set -x fish_color_cwd    purple
-set -g tide_character_color normal
+# set -U fish_color_status red
+# set -U fish_color_host   red
+# set -U fish_color_cwd    purple
+# set -U tide_character_color normal
 
 fish_add_path -g /usr/local/bin
 fish_add_path -g /opt/homebrew/bin
@@ -21,7 +21,7 @@ fish_add_path -g $HOME/.ghcup/bin
 fish_add_path -g $HOME/.local/bin
 # fish_add_path -g .
 
-if which -s swiftenv; status --is-interactive; and source (swiftenv init -|psub); end
+if which swiftenv > /dev/null; status --is-interactive; and source (swiftenv init -|psub); end
 
 set -x MANPAGER "nvim +Man!"
 set -x MANWIDTH "tty"
@@ -30,13 +30,14 @@ set -x PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig
 set -x LS_COLORS (vivid generate gruvbox-light)
 
 # Install fisher plugins in a separate subdirectory
-set -x fisher_path "$__fish_config_dir/fisher"
-set -x fish_complete_path $fisher_path/completions $fish_complete_path
-set -x fish_function_path $fisher_path/functions $fish_function_path
+set fisher_path "$__fish_config_dir/fisher"
+set fish_complete_path $fisher_path/completions $fish_complete_path
+set fish_function_path $fisher_path/functions $fish_function_path
 for conf in $fisher_path/conf.d/*.fish
   source $conf
 end
 
+# Abbreviations
 abbr --add dotdot --regex '^\.\.+$' --function multicd
 abbr --add !! --position anywhere --function last_history_item
 abbr --add ssh --function kitty_ssh
