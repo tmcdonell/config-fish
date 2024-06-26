@@ -10,10 +10,10 @@ set -x LESS_TERMCAP_so (printf "\033[01;44;33m")
 set -x LESS_TERMCAP_ue (printf "\033[0m")
 set -x LESS_TERMCAP_us (printf "\033[01;32m")
 
-# set -U fish_color_status red
-# set -U fish_color_host   red
-# set -U fish_color_cwd    purple
-# set -U tide_character_color normal
+# set fish_color_status red
+# set fish_color_host   red
+# set fish_color_cwd    purple
+set tide_character_color normal
 
 fish_add_path -g /usr/local/bin
 fish_add_path -g /opt/homebrew/bin
