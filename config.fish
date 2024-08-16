@@ -28,6 +28,7 @@ set -x MANWIDTH "tty"
 set -x EDITOR nvim
 set -x PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig
 set -x LS_COLORS (vivid generate gruvbox-light)
+set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/config
 
 # Install fisher plugins in a separate subdirectory
 set fisher_path "$__fish_config_dir/fisher"
