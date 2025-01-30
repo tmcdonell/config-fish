@@ -21,7 +21,7 @@ fish_add_path -g $HOME/.ghcup/bin
 fish_add_path -g $HOME/.local/bin
 # fish_add_path -g .
 
-if which swiftenv > /dev/null; status --is-interactive; and source (swiftenv init -|psub); end
+# if which swiftenv > /dev/null; status --is-interactive; and source (swiftenv init -|psub); end
 
 set -x MANPAGER "nvim +Man!"
 set -x MANWIDTH "tty"
